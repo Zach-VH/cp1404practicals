@@ -32,4 +32,9 @@ print("Finished")
 
 # Exercise 4:Now write a fourth block of code that prints the total for all lines in numbers.txt.
 # This should work for a file with any number of numbers.
-
+print("Starting Exercise 4")
+with open('numbers.txt','r') as in_file:
+    lines = in_file.readlines()
+    number_of_lines = len(lines)
+    print(number_of_lines)
+    print("Finished")
