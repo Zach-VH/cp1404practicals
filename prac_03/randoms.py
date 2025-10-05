@@ -1,3 +1,8 @@
+"""
+CP1404/CP5632 - Practical
+Various examples for using the imported function random
+"""
+
 import random
 
 print(random.randint(5, 20))  # line 1: produces a whole number between 5 and 20 including both endpoints
