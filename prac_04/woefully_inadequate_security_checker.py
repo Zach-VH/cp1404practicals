@@ -6,6 +6,17 @@ USERNAMES = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'B
              'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
 
 def main():
-    print("Does something")
+    username = input("Enter your username: ")
+    is_authorised = False
+    for auth_user in USERNAMES:
+        if auth_user == username:
+            is_authorised = True
+            break
+
+    if is_authorised:
+        print("Access Granted")
+    else:
+        print("Access Denied")
+
 
 main()
