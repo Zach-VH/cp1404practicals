@@ -7,16 +7,24 @@ USERNAMES = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'B
 
 def main():
     username = input("Enter your username: ")
+    is_authorised = authorise_user(username)
+    check_authorisation(is_authorised)
+
+
+def check_authorisation(is_authorised: bool):
+    if is_authorised:
+        print("Access Granted")
+    else:
+        print("Access Denied")
+
+
+def authorise_user(username: str) -> bool:
     is_authorised = False
     for auth_user in USERNAMES:
         if auth_user == username:
             is_authorised = True
             break
-
-    if is_authorised:
-        print("Access Granted")
-    else:
-        print("Access Denied")
+    return is_authorised
 
 
 main()
