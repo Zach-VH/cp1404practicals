@@ -23,6 +23,7 @@ def load_data(filename=FILENAME):
     return data
 
 def display_subject_details(subject_details):
+    """Print the subject details in a proper sentence form"""
     subject_width = max(len(parts[0]) for parts in subject_details)
     lecturer_width = max(len(parts[1]) for parts in subject_details)
     student_count_width = max(len(str(parts[2])) for parts in subject_details)

@@ -12,6 +12,7 @@ def main():
 
 
 def generate_quick_picks(number_of_picks):
+    """Generates 6 non-repeating ascending random integers for each line the user requests"""
     quick_pick = []
     for line in range(0, number_of_picks):
         new_line = []

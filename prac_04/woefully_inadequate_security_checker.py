@@ -12,6 +12,7 @@ def main():
 
 
 def check_authorisation(is_authorised: bool):
+    """Check if the authorisation is true and print access"""
     if is_authorised:
         print("Access Granted")
     else:
@@ -19,6 +20,7 @@ def check_authorisation(is_authorised: bool):
 
 
 def authorise_user(username: str) -> bool:
+    """Check the username entered with the list of authorised users"""
     is_authorised = False
     for auth_user in USERNAMES:
         if auth_user == username:

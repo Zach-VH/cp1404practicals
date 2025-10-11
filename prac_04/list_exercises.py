@@ -15,6 +15,7 @@ def main():
 
 
 def get_numbers():
+    """Get user inputted numbers"""
     numbers = []
     number = float(input(f"Enter number 1: "))
     while number != 0:
@@ -24,6 +25,7 @@ def get_numbers():
 
 
 def avg(numbers):
+    """Takes the sum of all numbers and divide by the length of the number set"""
     total = 0
     for number in numbers:
         total += number
