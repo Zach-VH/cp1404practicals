@@ -3,8 +3,10 @@ Exercises on how to store and read arrays
 """
 
 def main():
-    """Gets 5 numbers from user and displays the first, last, smallest, largest and average of the list"""
+    """Gets user inputted number of numbers from user and displays the first, last, smallest, largest and average of the list"""
+    print("Number set exercise. Enter any amount of number until you enter \'0\'")
     numbers = get_numbers()
+    print(f"You entered {len(numbers)} numbers")
     print(f"The first number is {numbers[0]}")
     print(f"The last number is {numbers[-1]}")
     print(f"The smallest number is {min(numbers)}")
@@ -14,8 +16,10 @@ def main():
 
 def get_numbers():
     numbers = []
-    for i in range(1, 6):
-        numbers.append(float(input(f"Enter number {i}: ")))
+    number = float(input(f"Enter number 1: "))
+    while number != 0:
+        numbers.append(number)
+        number = float(input(f"Enter number {len(numbers)+1}: "))
     return numbers
 
 
