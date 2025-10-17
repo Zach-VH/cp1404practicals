@@ -2,19 +2,18 @@
 Word Occurrences
 Estimate: 15 minutes
 Actual (functioning):  18  minutes 27 seconds
+Actual (Refactored): 20 minutes
 """
 
 
-s = input("Text: ").strip().split()
+words = input("Text: ").strip().split()
+unique_word_set = sorted(set(words))
 
-unique_word_set = sorted(set(s))
-d = {}
-
-
-for i in unique_word_set:
-    d[i] = len([word for word in s if word == i])
+words_to_occurences = {}
+for unique_word in unique_word_set:
+    words_to_occurences[unique_word] = len([word for word in words if word == unique_word])
 
 max_word_length = max(len(word) for word in unique_word_set)
-print(d)
-for word, occurence in d.items():
-    print(f"{word:{max_word_length}}: {occurence}")
+print(words_to_occurences)
+for word, occurence in words_to_occurences.items():
+    print(f"{word:{max_word_length}} : {occurence}")
