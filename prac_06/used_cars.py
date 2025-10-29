@@ -12,10 +12,10 @@ def main():
     my_car = Car("My Car", 180)
     my_car.drive(30)
     print(f"Car has fuel: {my_car.fuel}")
-    print(my_car)
+    print(f"{my_car} \n")
 
-    """"""
-    limo = Car("Limo",100)
+
+    limo = Car("limo",100)
     print(f"Limo currently has {limo.fuel} units of fuel")
     print("Filling 20 units of fuel into limo")
     limo.add_fuel(20)
