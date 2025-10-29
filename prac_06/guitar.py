@@ -1,7 +1,9 @@
 """
 Guitar class - Creates a guitar class instance
+
+Time to complete both guitar and guitar test
 Estimated: 15 minutes
-Actual:
+Actual: 12 minutes 21 seconds
 """
 
 class Guitar:
