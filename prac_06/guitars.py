@@ -3,16 +3,20 @@ Guitars list
 Estimate: 22 minutes
 Actual: 28 minutes
 
+Added checks for user inputs
+Updated time: 48 minutes
 """
 from prac_06.guitar import Guitar
 
 def main():
+    """Allow users to save guitars into a list and print out the list of guitars"""
     print("My guitars!")
     guitars = get_guitars()
     print_guitar_list(guitars)
 
 
 def print_guitar_list(guitars):
+    """Prints the list of guitars the user inputted and list if there are vintage"""
     print("\nThese are my guitars:")
     max_name_width = max(len(guitar.name) for guitar in guitars)
     max_cost_width = max(len(str(guitar.cost)) for guitar in guitars)
@@ -22,6 +26,7 @@ def print_guitar_list(guitars):
 
 
 def get_guitars():
+    """Gets a list of guitars collected from the user"""
     guitars = []
     name = input("Name: ")
     while name != "":
@@ -33,7 +38,8 @@ def get_guitars():
     return guitars
 
 
-def get_cost() -> float:
+def get_cost():
+    """Get the cost of the guitar, checking if it's a valid cost"""
     cost = -1
     while cost == -1:
         try:
@@ -47,6 +53,7 @@ def get_cost() -> float:
 
 
 def get_year():
+    """Get the year the guitar was created, checking if it's a valid year"""
     year = -1
     while year == -1:
         try:
