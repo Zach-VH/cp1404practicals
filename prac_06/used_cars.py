@@ -14,7 +14,7 @@ def main():
     print(f"Car has fuel: {my_car.fuel}")
     print(f"{my_car} \n")
 
-
+    #Exercise to create car object "Limo"
     limo = Car("limo",100)
     print(f"Limo currently has {limo.fuel} units of fuel")
     print("Filling 20 units of fuel into limo")
