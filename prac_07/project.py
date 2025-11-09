@@ -1,11 +1,13 @@
 """
 Project Class
 """
+import datetime
 
 class Project:
     def __init__(self, name="",date="",priority=0,cost=0.0,completion=0):
         self.name = name
         self.date = date
+        self._datetype = datetime.datetime.strptime(self.date, "%d/%m/%Y").date()
         self.priority = priority
         self.cost = cost
         self.completion = completion
@@ -20,15 +22,21 @@ class Project:
         else:
             return False
 
+    def __lt__(self, other):
+        return self._datetype < other._datetype
+
+
 def run_tests():
     projects = []
     with open("project.txt", 'r') as in_file:
-        header = in_file.readline().strip()
+        in_file.readline().strip()
         for line in in_file:
             parts = line.strip().split(',')
-            project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), float(parts[4]))
+            project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
             projects.append(project)
-    print(projects)
+    print([project.date.split('/') for project in projects])
     print(f"Completed:{[project for project in projects if project.is_complete()]}")
 
+    print(projects[0]<projects[2])
+    print(projects.sort())
 run_tests()

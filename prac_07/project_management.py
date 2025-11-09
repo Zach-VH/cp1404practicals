@@ -7,6 +7,7 @@ Documentation:
 Actual:
 """
 from project import Project
+import datetime
 
 DEFAULT_FILENAME = "project.txt"
 MENU = """- (L)oad projects
@@ -16,6 +17,7 @@ MENU = """- (L)oad projects
 - (A)dd new project
 - (U)pdate project
 - (Q)uit"""
+CONFIRMATION = ['yes','y','confirm']
 
 def main():
     projects, header = load_projects(DEFAULT_FILENAME)
@@ -34,13 +36,17 @@ def main():
         elif choice == "F":
             print("Filter selected")
         elif choice == "A":
-            print("Add selected")
+            add_project(projects)
         elif choice == "U":
             update_project(projects)
         else:
             print("Invalid Input")
         print(MENU)
         choice = input(">>> ").upper()
+    is_save = input(f"Would you like to save changes to file? ").lower() in CONFIRMATION
+    if is_save:
+        save_projects(projects, header)
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects(filename):
@@ -83,11 +89,30 @@ def update_project(projects):
         project_index = int(input("Project choice: "))
         project = projects[project_index]
         print(project)
-        updated_percentage = int(input("New percentage: "))
-        project.completion = updated_percentage
+        updated_percentage = input("New percentage: ")
+        if updated_percentage != "":
+            project.completion = int(updated_percentage)
+        updated_priority = input("New Priority: ")
+        if updated_priority != "":
+            project.priority = int(updated_priority)
     except ValueError:
         print("Input must be a integer")
     except IndexError:
         print("Choice is out of range of list")
 
+def add_project(projects):
+    print("Let's add a new project")
+    try:
+        name = input("Name: ")
+
+        date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
+        date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+
+        priority = int(input("Priority: "))
+        cost = float(input("Cost Estimate: $"))
+        completion = int(input("Percentage Complete: "))
+        project = Project(name,date.strftime("%d/%m/%Y"),priority,cost,completion)
+        projects.append(project)
+    except ValueError:
+        print("Value must be a number")
 main()
