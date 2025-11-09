@@ -6,8 +6,7 @@ import datetime
 class Project:
     def __init__(self, name="",date="",priority=0,cost=0.0,completion=0):
         self.name = name
-        self.date = date
-        self._datetype = datetime.datetime.strptime(self.date, "%d/%m/%Y").date()
+        self.date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
         self.priority = priority
         self.cost = cost
         self.completion = completion
@@ -23,7 +22,7 @@ class Project:
             return False
 
     def __lt__(self, other):
-        return self._datetype < other._datetype
+        return self.date < other.date
 
 
 def run_tests():
@@ -34,9 +33,8 @@ def run_tests():
             parts = line.strip().split(',')
             project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
             projects.append(project)
-    print([project.date.split('/') for project in projects])
     print(f"Completed:{[project for project in projects if project.is_complete()]}")
-
+    print(projects)
     print(projects[0]<projects[2])
     print(projects.sort())
 run_tests()

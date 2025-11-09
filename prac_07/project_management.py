@@ -2,7 +2,7 @@
 
 Estimate: 80 minutes
 
-Code:
+Code: 100 minutes
 Documentation:
 Actual:
 """
@@ -34,7 +34,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            print("Filter selected")
+            filter_project(projects)
         elif choice == "A":
             add_project(projects)
         elif choice == "U":
@@ -115,4 +115,12 @@ def add_project(projects):
         projects.append(project)
     except ValueError:
         print("Value must be a number")
+
+def filter_project(projects):
+    date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
+    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.date > date]
+    filtered_projects.sort()
+    for project in filtered_projects:
+        print(project)
 main()
