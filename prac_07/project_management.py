@@ -35,7 +35,7 @@ def main():
         elif choice == "A":
             print("Add selected")
         elif choice == "U":
-            print("Update selected")
+            update_project(projects)
         else:
             print("Invalid Input")
         print(MENU)
@@ -63,7 +63,17 @@ def display_projects(projects):
             print(f"  {project}")
 
 def update_project(projects):
-    for projects, i in enumerate(projects,0):
-        print(f"{i} {projects}")
+    for i, project in enumerate(projects,0):
+        print(f"{i} {project}")
+    try:
+        project_index = int(input("Project choice: "))
+        project = projects[project_index]
+        print(project)
+        updated_percentage = int(input("New percentage: "))
+        project.completion = updated_percentage
+    except ValueError:
+        print("Input must be a integer")
+    except IndexError:
+        print("Choice is out of range of list")
 
 main()

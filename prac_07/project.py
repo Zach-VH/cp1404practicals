@@ -3,7 +3,7 @@ Project Class
 """
 
 class Project:
-    def __init__(self, name="",date="",priority=0,cost=0.0,completion=0.0):
+    def __init__(self, name="",date="",priority=0,cost=0.0,completion=0):
         self.name = name
         self.date = date
         self.priority = priority
@@ -12,10 +12,10 @@ class Project:
 
     def __repr__(self):
         return (f"{self.name}, start:{self.date}, priority {self.priority}, estimated: ${self.cost:.2f}, "
-                f"completion: {self.completion * 100:.2f}%")
+                f"completion: {self.completion}%")
 
     def is_complete(self):
-        if self.completion == 1:
+        if self.completion == 100:
             return True
         else:
             return False
