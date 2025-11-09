@@ -25,9 +25,10 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            print("Load selected")
+            filename = f"{input("Filename: ")}.txt"
+            load_projects(filename)
         elif choice == "S":
-            print("Save selected")
+            save_projects(projects,header)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -44,13 +45,26 @@ def main():
 
 def load_projects(filename):
     projects = []
-    with open(filename, 'r') as in_file:
-        header = in_file.readline().strip()
-        for line in in_file:
-            parts = line.strip().split(',')
-            project = Project(parts[0],parts[1],int(parts[2]),float(parts[3]),float(parts[4]))
-            projects.append(project)
-    return projects, header
+    try:
+        with open(filename, 'r') as in_file:
+            header = in_file.readline().strip()
+            for line in in_file:
+                parts = line.strip().split(',')
+                project = Project(parts[0],parts[1],int(parts[2]),float(parts[3]),float(parts[4]))
+                projects.append(project)
+        return projects, header
+    except FileNotFoundError:
+        print(f"{filename} does not exist")
+
+def save_projects(projects,header):
+    filename = input("Enter file name: ")
+    if filename == "":
+        filename = DEFAULT_FILENAME
+    with open(f"{filename}.txt", 'w') as out_file:
+        print(header, file=out_file)
+        for project in projects:
+            print(f"{project.name},{project.date},{project.priority},{project.cost},{project.completion}",file=out_file)
+    print(f"Projects have been saved to {filename}.txt")
 
 def display_projects(projects):
     print("Incomplete projects:")
