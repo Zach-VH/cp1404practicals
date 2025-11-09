@@ -7,7 +7,7 @@ Actual: 12 minutes 21 seconds
 """
 from datetime import date
 
-current_year = date.today().year
+CURRENT_YEAR = date.today().year
 
 
 class Guitar:
@@ -20,8 +20,14 @@ class Guitar:
     def __str__(self):
         return f"{self.name} ({self.year}) : ${self.cost:.2f}"
 
+    def __repr__(self):
+        return f"{self.name} ({self.year}) : ${self.cost:.2f}"
+
+    def __lt__(self, other):
+        return self.year < other.year
+
     def get_age(self):
-        return current_year - self.year
+        return CURRENT_YEAR - self.year
 
     def is_vintage(self):
         if self.get_age() >= 50:
