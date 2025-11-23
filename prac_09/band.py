@@ -11,9 +11,11 @@ class Band():
         self.musicians = []
 
     def __str__(self):
+        """Return string instance of a band"""
         return f"{self.name} ({",".join([str(musician) for musician in self.musicians])})"
 
     def __repr__(self):
+        """Return a string representation of a Band, showing the variables."""
         return str(vars(self))
 
     def play(self):
