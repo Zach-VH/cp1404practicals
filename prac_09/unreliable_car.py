@@ -12,9 +12,11 @@ class UnreliableCar(Car):
         self.reliability = reliability
 
     def __str__(self):
+        """Return string instance of unreliable car"""
         return f"{super().__str__()}, Reliability = {self.reliability}%"
 
     def drive(self, distance):
+        """Randomly drive car based on reliability"""
         drive_chance = randint(0,100)
         if drive_chance < self.reliability:
             super().drive(distance)
