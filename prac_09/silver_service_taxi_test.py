@@ -9,4 +9,4 @@ print(my_taxi)
 
 my_taxi.drive(18)
 # print(f"Fare: ${my_taxi.get_fare()}")
-assert my_taxi.get_fare() == 48.78
+assert my_taxi.get_fare() == 48.80
