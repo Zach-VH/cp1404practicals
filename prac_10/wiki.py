@@ -2,11 +2,23 @@
 Wikipedia Library API
 """
 import wikipedia
+from wikipedia import DisambiguationError, PageError
+
 
 def run_test():
-    search = input("What would you like to search up? ")
+    search = input("Enter page title: ")
     while search != "":
-        print(wikipedia.summary(search,sentences=3))
-        search = input("What would you like to search up? ")
-    print("Thanking for using the search function")
+        try:
+            page = wikipedia.page(search)
+            print(page.title)
+            print(page.summary)
+            print(page.url)
+            print()
+        except DisambiguationError:
+            print('We need a more specific title. Try one of the following, or a new search:')
+            print(wikipedia.search(search,5))
+        except PageError:
+            print(f'Page id "{search}" does not match any pages. Try another id!')
+        search = input("Enter page title: ")
+    print("Thank you for using the search function")
 run_test()
