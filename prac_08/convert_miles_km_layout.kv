@@ -1,0 +1,22 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: input_text
+            multiline: False
+            font_size: 96
+            size_hint_x: 2
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'up'
+                on_press: app.change_value(1)
+            Button:
+                text: 'down'
+                on_press: app.change_value(-1)
+    Button:
+        text: 'Convert Miles to Km'
+        on_press: app.event_handler()
+    Label:
+        text: app.message
